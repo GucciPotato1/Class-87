@@ -1,6 +1,4 @@
-const { fabric } = require("./fabric");
-
-var canvas =  new faabric.Canvas('myCanvas');
+var canvas = new fabric.Canvas('myCanvas');
 block_image_width = 30;
 block_image_height = 30;
 player_x = 10;
@@ -22,9 +20,9 @@ function player_update()
     });
 }
 
-function new_image(get_image)
+function new_image(img1)
 {
-    fabric.Image.fromURL(get_image,function(Img) {
+    fabric.Image.fromURL(img1,function(Img) {
         block_image_object = Img;
 
         block_image_object.scaleToWidth(block_image_width);
@@ -155,8 +153,19 @@ function left()
     if(player_x>0)
     {
         player_x = player_x - block_image_width;
-        console.log("block image width=" +block_image_width);
-        console.log("When Left arrow key is pressed, X="  +player_x +", Y = "+player_y);
+        console.log("leftyyyyyyyyy");
+       
+        canvas.remove(player_object);
+        player_update();
+    }
+}
+
+function right()
+{
+    if(player_x <=850)
+    {
+        player_x = player_x + block_image_width;
+        console.log("rigthyyyyyyyyy");
         canvas.remove(player_object);
         player_update();
     }
